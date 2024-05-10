@@ -6,6 +6,12 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todoapp.databinding.ActivityMainBinding  // Make sure to import your generated binding class
 
+
+
+//entity
+//dao
+//database
+
 class MainActivity : AppCompatActivity() {
     // Declare the binding variable at the class level
     private lateinit var binding: ActivityMainBinding
@@ -24,7 +30,14 @@ class MainActivity : AppCompatActivity() {
 
         binding.deleteAll.setOnClickListener {
             DataObject.deleteAll()
+            setRecycler()
         }
+
+        setRecycler()
+
+    }
+
+    fun setRecycler(){
 
         // Setting up the RecyclerView
         binding.recyclerView.adapter = Adapter(DataObject.getAllData())

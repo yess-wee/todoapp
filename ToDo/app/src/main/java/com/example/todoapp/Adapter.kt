@@ -3,48 +3,40 @@ package com.example.todoapp
 import android.content.Intent
 import android.graphics.Color
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.view.view.mylayout
-import kotlinx.android.synthetic.main.view.view.priority
-import kotlinx.android.synthetic.main.view.view.title
+import com.example.todoapp.databinding.ViewBinding
 
-class Adapter(var data:List<CardInfo>): RecyclerView.Adapter<Adapter.viewHolder>() {
+class Adapter(var data: List<CardInfo>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
 
-    class viewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    class ViewHolder(val binding: ViewBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(data: CardInfo) {
+            binding.title.text = data.title
+            binding.priority.text = data.priority
 
-        var title = itemView.title
-        var priority = itemView.priority
-        var layout = itemView.mylayout
-    }
+            when (data.priority.toLowerCase()) {
+                "high" -> binding.mylayout.setBackgroundColor(Color.parseColor("#F05454"))
+                "medium" -> binding.mylayout.setBackgroundColor(Color.parseColor("#EDC988"))
+                else -> binding.mylayout.setBackgroundColor(Color.parseColor("#00917C"))
+            }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
-        var itemView = LayoutInflater.from(parent.context).inflate(R.layout.view,parent,false)
-
-        return viewHolder(itemView)
-    }
-
-    override fun getItemCount(): Int {
-        return data.size
-    }
-
-    override fun onBindViewHolder(holder: viewHolder, position: Int) {
-
-        when(data[position].priority.toLowerCase()){
-            "high" -> holder.layout.setBackgroundColor(Color.parseColor("#F05454"))
-            "medium" -> holder.layout.setBackgroundColor(Color.parseColor("#EDC988"))
-            else -> holder.layout.setBackgroundColor(Color.parseColor("#00917C"))
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, UpdateCard::class.java)
+                intent.putExtra("id", adapterPosition) // use adapterPosition instead of position
+                itemView.context.startActivity(intent)
+            }
         }
-
-        holder.title.text = data[position].title
-        holder.priority.text = data[position].priority
-        holder.itemView.setOnClickListener{
-            val intent= Intent(holder.itemView.context,UpdateCard::class.java)
-            intent.putExtra("id",position)
-            holder.itemView.context.startActivity(intent)
-        }
-
     }
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = ViewBinding.inflate(inflater, parent, false)
+        return ViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(data[position])
+    }
+
+    override fun getItemCount(): Int = data.size
 }
