@@ -2,34 +2,33 @@ package com.example.todoapp
 
 import android.icu.text.CaseMap.Title
 import android.renderscript.RenderScript.Priority
-
 object DataObject {
+    var listdata = mutableListOf<CardInfo>()
 
-    var listData = mutableListOf<CardInfo>()
-
-    fun setData(title: String, priority: String){
-        listData.add(CardInfo(title,priority))
+    fun setData(title: String, priority: String) {
+        listdata.add(CardInfo(title, priority))
     }
 
-    fun getAllData() : List<CardInfo>{
-        return listData
+    fun getAllData(): List<CardInfo> {
+        return listdata
     }
 
-    fun deleteAll() {
-        listData.clear()
+    fun deleteAll(){
+        listdata.clear()
     }
 
-    fun getData(pos:Int):CardInfo{
-        return listData[pos]
+    fun getData(pos:Int): CardInfo {
+        return listdata[pos]
     }
+
     fun deleteData(pos:Int){
-        listData.removeAt(pos)
+        listdata.removeAt(pos)
     }
 
     fun updateData(pos:Int,title:String,priority:String)
     {
-        listData[pos].title=title
-        listData[pos].priority=priority
+        listdata[pos].title=title
+        listdata[pos].priority=priority
     }
 
 }
