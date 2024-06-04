@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".HomeFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/image_slider"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            app:iss_auto_cycle="false"
+            app:iss_period="1000"
+            app:iss_delay="1000"
+            app:iss_selected_dot="@android:color/transparent"
+            app:iss_unselected_dot="@android:color/transparent"
+            android:layout_margin="30dp"
+            app:iss_text_align="CENTER"
+            android:layout_centerHorizontal="true"/>
+
+        <RelativeLayout
+            android:id="@+id/lay2"
+            android:layout_width="350dp"
+            android:layout_height="370dp"
+            android:layout_below="@id/image_slider"
+            android:layout_centerHorizontal="true"
+            android:background="#33691E">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="110dp"
+                android:layout_marginEnd="110dp"
+                android:layout_marginTop="15dp"
+                android:textSize="19sp"
+                android:gravity="center"
+                android:text="AKG Masjid"
+                android:textColor="@color/black" />
+
+            <RelativeLayout
+                android:layout_width="320dp"
+                android:layout_height="300dp"
+                android:background="@color/white"
+                android:layout_marginTop="60dp"
+                android:layout_marginLeft="15dp"
+                android:gravity="center">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ddfgdgldgl;vv"/>
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>

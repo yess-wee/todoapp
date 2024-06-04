@@ -1,0 +1,40 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:id="@+id/menu_group"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_menu_home"
+            android:title="Home" />
+
+        <item
+            android:id="@+id/nav_menu_prayer"
+            android:title="Prayer Time" />
+
+        <item
+            android:id="@+id/nav_menu_social_media"
+            android:title="Social Media" />
+
+        <item
+            android:id="@+id/nav_menu_donate"
+            android:title="Donate" />
+
+        <item
+            android:id="@+id/nav_menu_finance"
+            android:title="Finance" />
+
+        <item
+            android:id="@+id/nav_menu_moon_time"
+            android:title="Moon Time" />
+
+        <item
+            android:id="@+id/nav_menu_records"
+            android:title="Records" />
+
+    </group>
+
+
+
+</menu>
